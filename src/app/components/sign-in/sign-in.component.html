@@ -1,0 +1,103 @@
+<!-- <div class="container bg-light">
+    <div class="displayTableCell">
+  
+      <div class="authBlock">
+        <h3>Sign In</h3>
+        <div class="form-group">
+          <input type="text" class="form-Control" placeholder="Username" #userName required>
+        </div>
+  
+        <div class="form-group">
+          <input type="password" class="form-Control" placeholder="Password" #userPassword required>
+        </div> -->
+        <!-- *************************************************** -->
+  
+        <!-- Calling SignIn Api from AuthService -->
+        <!-- *************************************************** -->
+        <!-- <div class="form-group">
+          <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+        </div>
+  
+        <div class="form-group">
+          <span class="or"><span class="orInner">Or</span></span>
+        </div>
+   -->
+        <!-- Calling GoogleAuth Api from AuthService -->
+        <!-- <div class="form-group">
+          <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+            <i class="fab fa-google-plus-g"></i>
+            Log in with Google
+          </button>
+        </div>
+  
+        <div class="forgotPassword">
+          <span routerLink="/forgot-password">Forgot Password?</span>
+        </div>
+      </div>
+  
+      <div class="redirectToLogin">
+        <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+      </div>
+  
+    </div>
+  </div> -->
+
+  <!-- **************************************************************************************** -->
+  
+<nav class="navbar navbar-dark fixed-top bg-warning flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0 d-flex" routerLink="/home">
+  <h1 class="brand-logo"><img src="../../assets/logo.jpg" alt="logo" class="myLogo"></h1>
+    <span class="dashboard-text Prjname">Restaurant Management System</span>
+  </a>
+ 
+</nav>
+<br>
+<nav class="navbar navbar-expand-md navbar-light bg-dark content ">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ml-auto">
+        
+          <a  routerLink="/home"   class="aa text-light nav-item nav-link">HOME</a>
+      </div>
+  </div>
+</nav>
+  <!-- ***************************************************************************************** -->
+  <div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto py-4 px-0">
+            <div class="card p-0 row signIn">
+                <div class="card-title text-center">
+                    <h5 class="mt-5">HEY, THERE</h5> <small class="para">Login to your cool account below.</small>
+                </div>
+                <form class="signup">
+                    <div class="form-group">
+                        <input type="text" class="form-Control" placeholder="Username" #userName required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-Control" placeholder="Password" #userPassword required>
+                    </div>
+                     <!-- Calling SignIn Api from AuthService -->
+                    <div class="form-group">
+                        <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+                    </div>
+                    <div class="row">
+                        <div class="col"> 
+                           <a routerLink="/forgot-password">Forgot Password?</a>
+                        </div>
+                        <br>
+                        <div class="col">
+                            <span>Don't have an account?<a class="redirect" routerLink="/register-user"> Sign Up</a></span>
+                        </div>
+                    </div>
+                     <span class="text-center">Or</span> 
+                    <div class="row">
+                        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                            <i class="text-center"></i>Log in with Google
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ************************************************** -->

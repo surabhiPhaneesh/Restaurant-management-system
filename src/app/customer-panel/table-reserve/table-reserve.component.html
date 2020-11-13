@@ -1,0 +1,120 @@
+<marquee width="100%" direction="left">
+    <b class="text-danger">*NOTE: </b>
+    <span>  </span>To Cancel the Reservation Call for <b class="text-danger">9448500000</b>
+    <span>               </span>
+    <b class="text-success">*NOTE: </b>
+    <span>  </span>To Cancel the Reservation Call for <b class="text-danger">9448500000</b>
+    <span>  </span>
+    <b class="text-primary">*NOTE: </b>
+    <span>  </span>To Cancel the Reservation Call for <b class="text-danger">9448500000</b>
+    
+    <br>
+    <p><b class="text-danger">* </b>you can book only 1 table at a time.<span></span>To book more than one table call for 9448500000
+    <span>......</span>
+    <b class="text-danger">* </b>you can book only 1 table at a time.<span></span>To book more than one table call for 9448500000
+    <span>......</span>
+    <b class="text-danger">* </b>you can book only 1 table at a time.<span></span>To book more than one table call for 9448500000
+    <span>......</span>
+    <b class="text-danger">* </b>you can book only 1 table at a time.<span></span>To book more than one table call for 9448500000</p>
+</marquee>
+<div class="container-fluid p-0">
+    <h2 class="text-center bg-dark text-light font-weight-bold p-2">TABLE RESERVATION</h2>
+    <div class="container-fluid p-2">
+        <div class="row m-2">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label >NAME</label>
+                    <input type="text" class="form-control" [(ngModel)]="Uname">
+                </div>
+                <div class="form-group">
+                    <label >PHONE NUMBER</label>
+                    <input type="number" class="form-control" [(ngModel)]="Unumber" >
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label >ADDRESS</label>
+                    <textarea class="form-control" name="w3review" rows="6" cols="30" [(ngModel)]="Uaddress"></textarea>
+                </div>
+                <div class="form-group">
+                    <label >SELECT TYPE</label>
+                    <select class="form-control" [(ngModel)]="User_Table_type" >
+                        <option value="couple">Couple</option>
+                        <option value="family" selected>Family</option>
+                        <option value="official">Official</option>
+                    </select>
+                    
+                </div>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="check_availability()" [disabled]="!User_Table_type">CHECK AVAILABILITY</button>
+                </div>
+                <div *ngIf="count!=0;else countZero">
+                    <label for="SELECT TABLE">TABLE NUMBER</label>
+                    <select class="form-control" [(ngModel)]="User_Select_Table" value={{User_Select_Table}} >
+                        <option *ngFor="let item of ava_tables" value={{item.ava_number}}>{{item.ava_name}}  {{item.ava_number}}</option>
+                    </select>
+                </div>
+                <ng-template #countZero>
+                    <div></div>
+                </ng-template>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-success" (click)="reserve()" [disabled]="!Uname || !Unumber||!Uaddress ||!User_Table_type || !User_Select_Table">RESERVE</button>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h3 class="text-center bg-primary text-light">AVAILABLE TABLE </h3>
+                
+                <div *ngIf="count!=0;else elseBlock">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table tables1">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Sl-No</th>
+                                        <th scope="col">table-Type</th>
+                                        <th scope="col">Table_number</th>
+                                        <th scope="col">No-of-Seats</th>
+                                        <th scope="col">cost</th>
+                                    </tr>
+                                    </thead>
+                                    <!-- <div> -->
+                                        <tbody   *ngFor="let tab of ava_tables ;index as i" >
+                                            <tr >
+                                                <td>{{i}}</td>
+                                                <td>{{tab.ava_name}}</td>
+                                                <td>{{tab.ava_number}}</td>
+                                                <td>{{tab.ava_seats}}</td>
+                                                <td>{{tab.ava_amount}}</td>
+                                            </tr>
+                                        </tbody>
+                                    <!-- </div> -->
+                                </table>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #elseBlock>
+                    <div class="alert">
+                          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                          <strong>MESSAGE!</strong> click on check availability to find the available table
+                     </div>
+                </ng-template>
+                <div class="container" *ngIf="isReserve==true">
+                    <div class="form-group">
+                        <label >CARD NUMBER</label>
+                        <input type="number" #cNum class="form-control" style.color= "{{cNum.value.length == 12 ? 'green' : 'red'}}" length=12 required [(ngModel)]="cNumber" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">BOOK</label>
+                        <button class="btn btn-primary" (click)="book()" *ngIf="User_Table_type=='couple'">2000</button>
+                        <button class="btn btn-primary" (click)="book()" *ngIf="User_Table_type=='family'">4000</button>
+                        <button class="btn btn-primary" (click)="book()" *ngIf="User_Table_type=='official'">9000</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark fixed-top bg-warning flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 d-flex" routerLink="/home">
+    <h1 class="brand-logo"><img src="../../assets/logo.jpg" alt="logo" class="myLogo"></h1>
+      <span class="dashboard-text Prjname">Restaurant Management System</span>
+    </a>    
+ </nav>
+ <br>
+ <br>
+ <nav class="container-fluid navbar navbar-expand-md navbar-light bg-dark content pt-5 ">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+          <a [routerLink]="['/admin-panel']" routerLinkActive="router-link-active"  class="aa text-light nav-item nav-link active">Home</a>
+          <a routerLink="./add-item" class=" aa text-light nav-item nav-link">Add-Item</a>
+          <a routerLink="./view-item" class="aa text-light nav-item nav-link bspecial">View-item</a>
+          <a routerLink="./booking" class=" aa text-light nav-item nav-link">Booking-Details</a>
+          <a routerLink="./history" class=" aa text-light nav-item nav-link">History</a>
+         <a  class="aa text-light nav-item nav-link disabled" tabindex="-1"></a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link text-light float-left" style="cursor: pointer;" (click)="authService.SignOut()">
+            <i class="fas fa-sign-out-alt"></i>Log out
+        </a>
+      </div>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>
+
+<!-- ********************************************************* -->
+
+<!-- <div class="form-group">
+      <h1><b>{{message}}</b></h1>
+    </div> -->
+   

@@ -1,0 +1,133 @@
+<!-- <nav class="navbar navbar-dark fixed-top bg-warning flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0 d-flex" routerLink="/home">
+  <h1 class="brand-logo"><img src="../../assets/logo.jpg" alt="logo" class="myLogo"></h1>
+    <span class="dashboard-text Prjname">Restaurant Management System</span>
+  </a>    
+</nav>
+<br>
+<br>
+<nav class="navbar navbar-expand-md navbar-light bg-dark content pt-5 ">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav">
+        <a routerLink="/admin-panel" class="aa text-light nav-item nav-link active">Home</a>
+        <a routerLink="./add-item" class=" aa text-light nav-item nav-link">Add-Item</a>
+        <a routerLink="./view-item" class="aa text-light nav-item nav-link bspecial">View-item</a>
+        <a href="" class=" aa text-light nav-item nav-link">Booking-Details</a>
+        <a href="" class=" aa text-light nav-item nav-link">Users</a>
+       <a  class="aa text-light nav-item nav-link disabled" tabindex="-1"></a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <a class="nav-link text-light float-left" style="cursor: pointer;" (click)="authService.SignOut()">
+          <i class="fas fa-sign-out-alt"></i>Log out
+      </a>
+    </div>
+</div>
+</nav> -->
+<br>
+<div class="container">
+    <div class="row justify-content-center p-2">
+      <h1>ADD-ITEM</h1>
+    </div>
+    <div class="form-group">
+        <label >ITEM NAME</label>
+        <input type="text" class="form-control" [(ngModel)]="ItemName">
+    </div>
+    <div class="form-group">
+        <label >IMAGE</label>
+        <input type="text" class="form-control" #images [(ngModel)]="ItemImage">
+        <br>
+        <img src={{images.value}} alt="image" style="width:200px;height:100px;border-color: black;">
+    </div>
+    <div class="form-group">
+        <label >DESCRIPTION</label>
+        <input type="text" class="form-control" [(ngModel)]="ItemDescription">
+    </div>
+    <div class="form-group">
+        <label >AMOUNT</label>
+        <input type="number" class="form-control" [(ngModel)]="ItemCost">
+    </div>
+    <br>
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="createRecord()" [disabled]="!ItemName || !ItemImage || !ItemDescription||!ItemCost">ADD ITEM</button>
+    </div>
+</div>
+
+  
+<br>
+<div class="row p-2"> 
+   <div class="col-md-12 p-4 justify-content-center">
+    <h4>TODAY'S DISHES</h4>
+  </div>
+  <div class="col-md-12 justify-content-center" *ngIf="Items.length==0;else dataPresent">
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <strong>MESSAGE!</strong> NO ITEMS TO DISPLAY
+    </div>
+  </div>
+<ng-template #dataPresent>
+    <div class="col-md-3" *ngFor="let item of Items">
+      
+<div class="card"  style="height:470px;" *ngIf="!item.isEdit;else elseBlock">
+<img class="card-img-top" src={{item.ItemImage}} alt="Card image cap" style="height:200px;">
+  <div class="card-body">
+    <div class="card-title">
+        <b>ItemName : </b>{{item.ItemName}}
+    </div>
+    <div class="card-subtitle">
+        <b>ItemDescription : </b> {{item.ItemDescription}}
+    </div>
+    <div class="card-text">
+        <b>ItemCost : </b>{{item.ItemCost}}
+    </div>
+    <br>
+    <a (click)="EditRecord(item)" class="btn btn-success mr-2 btn-md">EDIT</a>
+    <a (click)="DeleteRecord(item.id)" class="btn btn-danger btn-md">DELETE</a>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="card col-md-12">
+    <div class="card-body">
+      <div class="card-title">
+        <b class="text-center text-success">UPDATE</b>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-md-12">
+            <label >ItemName:</label>
+            <input type="text" class="form-group" [(ngModel)]="item.editName">
+          </div>
+          <br>
+          <div class="col-md-12">
+            <label >ItemImage:</label>
+            <input type="text" class="form-group" [(ngModel)]="item.editImage" >
+            <img src={{item.editImage}} alt="imageFood" style="height:250px;width:250px;">
+            </div>
+          <br>
+          <div class="col-md-12">
+            <label >ItemDescription:</label>
+            <!-- <input type="text" class="form-group" [(ngModel)]="item.editDes"> -->
+            <textarea id="w3review" name="w3review" rows="6" cols="30" [(ngModel)]="item.editDes"></textarea>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <label >ItemCost</label>
+            <input type="number" class="form-group" [(ngModel)]="item.editCost">
+          </div>
+          <br>
+        </div>
+      </div>
+
+      <a  (click)="item.isEdit = false" class="btn btn-danger mr-2 btn-md">CANCEL</a>
+      <a  (click)="UpdateRecord(item)" class="btn btn-warning btn-md">UPDATE</a>
+    </div>
+  </div>
+</ng-template>
+    </div>
+  </ng-template> 
+  
+  
+</div>
+
+  <!--  -->
+  
+  

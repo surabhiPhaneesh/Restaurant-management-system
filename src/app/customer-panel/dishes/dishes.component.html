@@ -1,0 +1,72 @@
+<!-- <div class="container-fluid" >
+    <div class="row">
+      <div class="col-12">
+      <table class="table table-image">
+        <thead>
+          <tr>
+            <th scope="col">Sl-No</th>
+            <th scope="col">Image</th>
+            <th scope="col"> Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">cost</th>
+            <th scope="col">Add TO CART</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Items ;index as i">
+            <th scope="row">{{i}}</th>
+            <td class="w-25">
+              <img src={{item.ItemImage}} class="img-fluid img-thumbnail imagesFood" alt="Sheep" style="width:190px;height:170px;">
+            </td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemDescription}}</td>
+            <td>{{item.ItemCost}}</td>
+            <td><a (click)="AddToCart(item.id)" class="btn btn-danger btn-md"><i class="fas fa-cart-plus"></i></a></td>
+          </tr>
+        </tbody>
+      </table>   
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container-fluid mt-2">
+    <div class="row p-2">
+      <!-- TO DISPLAY CARD -->
+      <div class="col-md-9">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4"*ngFor="let item of Items ;index as i">
+              <div class="card"  style="height:430px;" >
+                <img class="card-img-top" src={{item.ItemImage}} alt="Card image-cap" style="height:180px;">
+                  <div class="card-body">
+                    <div class="card-title">
+                        <b>ItemName : </b>{{item.ItemName}}
+                    </div>
+                    <div class="card-subtitle">
+                        <b>ItemDescription : </b> {{item.ItemDescription}}
+                    </div>
+                    <div class="card-text">
+                        <b>ItemCost : </b>{{item.ItemCost}}
+                    </div>
+                  </div>
+                  <!-- <div class="card-footer"> -->
+                    <a (click)="AddToCart(item.id)" class=" card-footer bg-danger btn btn-danger"><b>ADD TO CART </b><i class="fas fa-cart-plus"></i></a>
+                  <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TO DISPLAY CART -->
+      <div class="col-md-3">
+        <div class="contaier-fluid  carts-summary">
+          <h4><p class="bg-dark text-light text-center p-4"><b>CART SUMMARY <i class="fas fa-cart-plus"></i><sup > 0 </sup></b></p></h4>
+            <div class="container justify-content-center">
+              <p><i class="fab fa-buffer"></i><b>  item : 0 </b></p>
+            <p><i class="fas fa-money-bill"></i><b>  total amount : 0</b></p>
+            <p *ngIf="authService.userData as users">{{users.uid}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

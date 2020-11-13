@@ -1,0 +1,9 @@
+.imagesFood:hover{
+    transform:scale(1.8);
+    border:2px solid black;
+    border-radius:25%;
+}
+.carts-summary
+{
+    border:1px dotted wheat;
+}

@@ -1,0 +1,72 @@
+
+
+
+    <div class="row p-2"> 
+       <div class="col-md-12 p-4 justify-content-center text-center">
+        <h4>TODAY'S DISHES</h4>
+      </div>
+      <!-- <div class="col-md-12 justify-content-center" *ngIf="Items.length==0;else dataPresent">
+        <div class="alert">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>MESSAGE!</strong> NO ITEMS TO DISPLAY
+        </div>
+      </div>
+   <ng-template #dataPresent>
+        <div class="col-md-3" *ngFor="let item of Items">
+          
+    <div class="card"  style="height:470px;" *ngIf="!item.isEdit;else elseBlock">
+    <img class="card-img-top" src={{item.ItemImage}} alt="Card image cap" style="height:200px;">
+      <div class="card-body">
+        <div class="card-title">
+            <b>ItemName : </b>{{item.ItemName}}
+        </div>
+        <div class="card-subtitle">
+            <b>ItemDescription : </b> {{item.ItemDescription}}
+        </div>
+        <div class="card-text">
+            <b>ItemCost : </b>{{item.ItemCost}}
+        </div>
+        <br>
+        
+      </div>
+    </div>
+    
+        </div>
+      </ng-template> 
+      
+      
+   </div> -->
+
+
+
+
+   <div class="container">
+    <div class="row">
+      <div class="col-12">
+      <table class="table table-image">
+        <thead>
+          <tr>
+            <th scope="col">Sl-No</th>
+            <th scope="col">Image</th>
+            <th scope="col"> Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">cost</th>
+            <th scope="col">delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Items ;index as i">
+            <th scope="row">{{i}}</th>
+            <td class="w-25">
+              <img src={{item.ItemImage}} class="img-fluid img-thumbnail" alt="Sheep" style="width:210px;height:250px;">
+            </td>
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemDescription}}</td>
+            <td>{{item.ItemCost}}</td>
+            <td><a (click)="DeleteRecord(item.id)" class="btn btn-danger btn-md">DELETE</a></td>
+          </tr>
+        </tbody>
+      </table>   
+      </div>
+    </div>
+  </div>

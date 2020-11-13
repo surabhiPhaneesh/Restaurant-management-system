@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark fixed-top bg-warning flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 d-flex" routerLink="/home">
+    <h1 class="brand-logo"><img src="../../assets/logo.jpg" alt="logo" class="myLogo"></h1>
+      <span class="dashboard-text Prjname">Restaurant Management System</span>
+    </a>
+   
+  </nav>
+  <br>
+  <nav class="navbar navbar-expand-md navbar-light bg-dark content ">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto">
+          <!-- <a [routerLink]="['/register-user']" routerLinkActive="active"  class=" aa text-light nav-item nav-link">Sign-up</a> -->
+            <a  routerLink="/home"   class="aa text-light nav-item nav-link">HOME</a>
+        </div>
+    </div>
+  </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto py-4 px-0">
+            <div class="card p-0">
+                <div class="card-title text-center">
+                    <h5 class="mt-5">HEY, THERE</h5> <small class="para">What are you waiting for? DO Register.</small>
+                </div>
+                <form class="signup">
+                    <div class="form-group">
+                        <input type="text" class="form-Control" placeholder="Username" #userEmail required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-Control" placeholder="Password" #userPwd required>
+                    </div>
+                     <!-- Calling SignIn Api from AuthService -->
+                    <div class="form-group">
+                        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <!-- <span>Already have account??<span class="redirect" routerLink="/sign-in"> Sign In</span></span> -->
+                            <span>Already have an account? <a class="redirect text-warning" routerLink="/sign-in">Log In</a></span>
+                        </div>
+                    </div>
+                     <span class="text-center">Or</span> 
+                    <div class="row">
+                        <button type="button gbtn" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                            <i class="fa fa-google"></i>Continue with Google
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

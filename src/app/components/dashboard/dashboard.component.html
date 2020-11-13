@@ -1,0 +1,32 @@
+  <nav class="navbar navbar-dark fixed-top bg-warning flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 d-flex" routerLink="/home">
+    <h1 class="brand-logo"><img src="../../assets/logo.jpg" alt="logo" class="myLogo"></h1>
+      <span class="dashboard-text Prjname">Restaurant Management System</span>
+    </a>    
+ </nav>
+ <br>
+ <br>
+ <nav class="container-fluid navbar navbar-expand-md navbar-light bg-dark content pt-5 ">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+          <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  class="aa text-light nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
+          <a routerLink="./dishes" class=" aa text-light nav-item nav-link"><i class="fas	fa-bread-slice"></i> DISHES</a>
+          <a routerLink="./cart" class="aa text-light nav-item nav-link bspecial"><i class="fas fa-cart-plus"></i> CART <sup>0</sup></a>
+          <a routerLink="./reserve" class=" aa text-light nav-item nav-link"><i class="fas fa-clock"></i> RESERVE-TABLE</a>
+         
+         <a  class="aa text-light nav-item nav-link disabled" tabindex="-1"></a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <a routerLink="./profile"class=" aa text-light nav-item nav-link"><i class="fa fa-user"></i> PROFILE</a>
+        <a class="nav-link text-light float-left" style="cursor: pointer;" (click)="authService.SignOut()">
+            <i class="fa fa-sign-out-alt"></i>Log out
+        </a>
+      </div>
+  </div>
+</nav>
+<app-carousal></app-carousal>
+<router-outlet></router-outlet>
+<!--  -->
+
+
+

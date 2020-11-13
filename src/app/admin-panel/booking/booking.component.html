@@ -1,0 +1,139 @@
+<div class="container-fluid bookingBody" >
+
+  <div class="row">
+      <div class="col-md-7 sec1">
+        <div class="row justify-content-center p-2">
+            <h1 class="text-dark">ADD-TABLE-DETAILS</h1>
+          </div>
+          <div class="form-group">
+              <label >TABLE TYPE</label>
+              <select  [(ngModel)]="Tname" class="form-control" value={{Tname}}>
+                  <option value="couple">Couple</option>
+                  <option value="family" selected>Family</option>
+                  <option value="official">Official</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label >TABLE NUMBER</label>
+              <input type="text" class="form-control" [(ngModel)]="Tnumber">
+              <br>
+          </div>
+          <div class="form-group">
+              <label >NUMBER OF SEATS</label>
+              <input type="text" class="form-control" [(ngModel)]="Tseats">
+          </div>
+          <div class="form-group">
+              <label >AMOUNT</label>
+              <input type="number" class="form-control" [(ngModel)]="Tamount">
+          </div>
+          <br>
+          <div class="form-group">
+            <button class="btn btn-primary" (click)=" AddTable()" [disabled]="!Tname || !Tnumber || !Tseats||!Tamount">ADD TABLE</button>
+          </div>
+          <div class="details">
+            <p class="bg-danger text-light">Total number of tables:12</p>
+            <p >couple table:04 <br>
+            Family table:04<br>
+            couple table:04</p>
+        </div>
+      </div>
+      <div class="col-md-5 p-3 sec2">
+          <div class="container-fluid tables">
+                <h2 class="text-center  text-danger">
+                   NON-BOOKED TABLE DETAILS
+                </h2>
+                <div class="container">
+                    <div class="row">
+                      <div class="col-12">
+                      <table class="table tables1">
+                        <thead>
+                          <tr>
+                            <th scope="col">Sl-No</th>
+                            <th scope="col">table-Type</th>
+                            <th scope="col">Table_number</th>
+                            <th scope="col">No-of-Seats</th>
+                            <th scope="col">cost</th>
+                          </tr>
+                        </thead>
+                        <tbody  *ngFor="let tab of Tables ;index as i">
+                          <tr *ngIf="tab.Tname=='couple'" class="couple">
+                            <th>{{i}}</th>
+                            <td>{{tab.Tname}}</td>
+                            <td>{{tab.Tnumber}}</td>
+                            <td>{{tab.Tseats}}</td>
+                            <td>{{tab.Tamount}}</td>
+                          </tr>
+                          <tr *ngIf="tab.Tname=='family'" class="family">
+                            <th>{{i}}</th>
+                            <td>{{tab.Tname}}</td>
+                            <td>{{tab.Tnumber}}</td>
+                            <td>{{tab.Tseats}}</td>
+                            <td>{{tab.Tamount}}</td>
+                          </tr>
+                          <tr *ngIf="tab.Tname=='official'" class="official">
+                            <th>{{i}}</th>
+                            <td>{{tab.Tname}}</td>
+                            <td>{{tab.Tnumber}}</td>
+                            <td>{{tab.Tseats}}</td>
+                            <td>{{tab.Tamount}}</td>
+                          </tr>
+                        </tbody>
+                      </table>   
+                      </div>
+                    </div>
+                  </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <h2 class="text-center bg-dark text-light p-2">BOOKING-DETAILS</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" *ngIf='count!=0;else elseBlocks'>
+          <table class="table tables1">
+            <thead>
+              <tr>
+                <th scope="col">Sl-No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Time</th>
+                <th scope="col">Table Type</th>
+                <th scope="col">Table Number</th>
+                <th>ADDRESS</th>
+                
+                <th>SERVICED</th>
+              </tr>
+            </thead>
+            <tbody  *ngFor="let tab of Booking ;index as i">
+              <tr>
+                <th>{{i}}</th>
+                <td>{{tab.Rname}}</td>
+                <td>{{tab.Rnumber}}</td>
+                <td>{{tab.Rtime.toDate() | date:'medium'}}</td>
+                <td>{{tab.Rtype}}</td>
+                <td>{{tab.RTnumber}}</td>
+                <td>{{tab.Raddress}}</td>
+                <button class="btn btn-primary mt-2" (click)="serviced(tab,tab.Rid)"><i class="fa fa-check"></i></button>
+              </tr>
+              
+            </tbody>
+          </table>   
+        </div>
+        <ng-template #elseBlocks>
+          <div class="col-md-12 justify-content-center">
+            <div class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+              <strong>MESSAGE!</strong> NONE OF THE TABLE RESERVED
+            </div>
+          </div>
+        </ng-template>
+        
+      </div>
+    </div>
+
+
+
+    
+</div>
